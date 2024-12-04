@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Define o arquivo como XML, especificando a versão e a codificação. -->
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.ListaProduto"
+             Title="Minhas Compras">
+    <!-- 
+    Define a página principal do tipo ContentPage.
+    - `xmlns` e `xmlns:x`: Declaram os namespaces para usar elementos XAML e marcações específicas do .NET.
+    - `x:Class`: Associa a página ao código-behind `ListaProduto.xaml.cs`.
+    - `Title`: Define o título da página como "Minhas Compras".
+    -->
+
+    <ContentPage.ToolbarItems>
+        <!-- Adiciona itens na barra de ferramentas da página. -->
+
+        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
+        <!-- Botão "Somar" na Toolbar, que chama o método `ToolbarItem_Clicked_1` no código-behind. -->
+
+        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+        <!-- Botão "Adicionar" na Toolbar, que chama o método `ToolbarItem_Clicked` no código-behind. -->
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <!-- Organiza os elementos verticalmente na página. -->
+
+        <SearchBar x:Name="txt_search" 
+                   Placeholder="Busca de Produtos"
+                   TextChanged="txt_search_TextChanged"/>
+        <!-- 
+        Campo de busca para filtrar os produtos.
+        - `x:Name`: Nome do componente para referência no código-behind.
+        - `Placeholder`: Texto exibido quando o campo está vazio.
+        - `TextChanged`: Evento acionado sempre que o texto da busca muda, permitindo implementar a filtragem no código-behind.
+        -->
+
+        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
+            <!-- 
+            Componente que exibe a lista de produtos.
+            - `x:Name`: Nome do ListView para referência no código-behind.
+            - `ItemSelected`: Evento acionado quando um item da lista é selecionado, permitindo tratar essa ação no código-behind.
+            -->
+
+            <ListView.Header>
+                <!-- Define o cabeçalho da lista com os nomes das colunas. -->
+                <Grid ColumnDefinitions="*, *, *, *, *">
+                    <!-- Organiza os itens do cabeçalho em 5 colunas com tamanhos proporcionais. -->
+
+                    <Label Grid.Column="0" Text="ID" />
+                    <Label Grid.Column="1" Text="Descrição" />
+                    <Label Grid.Column="2" Text="Preço" />
+                    <Label Grid.Column="3" Text="Qnt" />
+                    <Label Grid.Column="4" Text="Total" />
+                    <!-- Define os rótulos para cada coluna do cabeçalho. -->
+                </Grid>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <!-- Define o layout dos itens na lista. -->
+                <DataTemplate>
+                    <ViewCell>
+                        <!-- Representa um item individual na lista. -->
+
+                        <ViewCell.ContextActions>
+                            <!-- Adiciona ações contextuais ao item, exibidas ao deslizar ou segurar o item. -->
+
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                            <!-- Adiciona uma opção "Remover", que chama o método `MenuItem_Clicked` no código-behind. -->
+                        </ViewCell.ContextActions>
+
+                        <Grid ColumnDefinitions="*, *, *, *, *">
+                            <!-- Organiza os dados do produto em 5 colunas com tamanhos proporcionais. -->
+
+                            <Label Grid.Column="0" Text="{Binding Id}" />
+                            <Label Grid.Column="1" Text="{Binding Descricao}" />
+                            <Label Grid.Column="2" Text="{Binding Preco}" />
+                            <Label Grid.Column="3" Text="{Binding Quantidade}" />
+                            <Label Grid.Column="4" Text="{Binding Total}" />
+                            <!-- Cada `Label` exibe uma propriedade do objeto Produto vinculado ao item. -->
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

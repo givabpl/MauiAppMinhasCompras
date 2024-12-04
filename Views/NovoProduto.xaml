@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.NovoProduto"
+             Title="Novo Produto">
+
+
+    <ContentPage.ToolbarItems>
+        <!-- Adiciona itens na barra de ferramentas da página. -->
+
+        <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
+        <!-- 
+        Botão na Toolbar com o texto "Salvar".
+        - `Clicked`: Vincula o evento `ToolbarItem_Clicked` no código-behind, que será responsável por salvar o produto.
+        -->
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Spacing="10" Padding="10">
+        <!-- 
+        Layout que organiza os elementos na vertical.
+        - `Spacing`: Define o espaço entre os elementos.
+        - `Padding`: Define o espaçamento interno (margem) do layout.
+        -->
+
+        <Label Text="Descrição do Produto:" />
+        <!-- Rótulo que descreve o campo de entrada da descrição do produto. -->
+
+        <Entry x:Name="txt_descricao" />
+        <!-- 
+        Campo de entrada de texto para a descrição do produto.
+        - `x:Name`: Permite referenciar esse campo no código-behind.
+        -->
+
+        <Label Text="Quantidade:" />
+        <!-- Rótulo que descreve o campo de entrada da quantidade do produto. -->
+
+        <Entry x:Name="txt_quantidade" Keyboard="Numeric" />
+        <!-- 
+        Campo de entrada para a quantidade do produto.
+        - `Keyboard="Numeric"`: Define que o teclado numérico será exibido para facilitar a entrada.
+        - `x:Name`: Nome do campo para uso no código-behind.
+        -->
+
+        <Label Text="Preço Unitário:" />
+        <!-- Rótulo que descreve o campo de entrada do preço do produto. -->
+
+        <Entry x:Name="txt_preco" Keyboard="Numeric" />
+        <!-- 
+        Campo de entrada para o preço unitário do produto.
+        - `Keyboard="Numeric"`: Exibe o teclado numérico para facilitar a entrada.
+        - `x:Name`: Nome do campo para uso no código-behind.
+        -->
+    </VerticalStackLayout>
+</ContentPage>

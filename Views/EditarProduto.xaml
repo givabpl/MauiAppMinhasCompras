@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.EditarProduto"
+             Title="{Binding Descricao}">
+    <!-- 
+    Define a página principal do tipo ContentPage.
+    - `xmlns` e `xmlns:x`: Declara os namespaces para usar elementos XAML e marcações específicas do .NET.
+    - `x:Class`: Associa a página ao código-behind `EditarProduto.xaml.cs`.
+    - `Title`: Vincula o título da página à propriedade `Descricao` do ViewModel ou BindingContext.
+    -->
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <!-- 
+    Adiciona uma barra de ferramentas no topo da página com um botão "Salvar".
+    - `Text`: Define o texto exibido no botão.
+    - `Clicked`: Especifica o evento de clique, que será tratado no código-behind.
+    -->
+
+    <VerticalStackLayout Spacing="10" Padding="10">
+        <Label Text="Descrição do Produto:" />
+        <!-- Exibe um texto para informar o usuário sobre o próximo campo. -->
+
+        <Entry x:Name="txt_descricao" Text="{Binding Descricao}" />
+        <!-- 
+        Entrada de texto para a descrição do produto.
+        - `x:Name`: Nome único para referência no código-behind.
+        - `Text`: Vincula o valor digitado à propriedade `Descricao` do BindingContext.
+        -->
+
+        <Label Text="Quantidade:" />
+        <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric" />
+        <!-- 
+        Entrada de texto para a quantidade do produto.
+        - `Text`: Vincula o valor digitado à propriedade `Quantidade`.
+        - `Keyboard`: Define o teclado numérico para facilitar a digitação de números.
+        -->
+
+        <Label Text="Preço Unitário:" />
+        <Entry x:Name="txt_preco" Text="{Binding Preco}" Keyboard="Numeric" />
+        <!-- 
+        Entrada de texto para o preço unitário do produto.
+        - `Text`: Vincula o valor digitado à propriedade `Preco`.
+        - `Keyboard`: Também usa teclado numérico.
+        -->
+    </VerticalStackLayout>
+    <!-- O layout vertical empilha os elementos acima. -->
+</ContentPage>
